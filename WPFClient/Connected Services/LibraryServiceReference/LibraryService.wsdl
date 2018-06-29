@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="LibraryService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_ILibraryService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LibraryAppService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ILibraryService_GetListOfBooks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetListOfBooks" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetListOfBooks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetListOfBooksResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_VerifyLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyLogin" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_VerifyLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_BooksInLibraries_InputMessage">
+    <wsdl:part name="parameters" element="tns:BooksInLibraries" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_BooksInLibraries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BooksInLibrariesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_Request_InputMessage">
+    <wsdl:part name="parameters" element="tns:Request" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_Request_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_ShowRequests_InputMessage">
+    <wsdl:part name="parameters" element="tns:ShowRequests" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_ShowRequests_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ShowRequestsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetPersonalData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonalData" />
+  </wsdl:message>
+  <wsdl:message name="ILibraryService_GetPersonalData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonalDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ILibraryService">
+    <wsdl:operation name="GetListOfBooks">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetListOfBooks" message="tns:ILibraryService_GetListOfBooks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetListOfBooksResponse" message="tns:ILibraryService_GetListOfBooks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/VerifyLogin" message="tns:ILibraryService_VerifyLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/VerifyLoginResponse" message="tns:ILibraryService_VerifyLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BooksInLibraries">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/BooksInLibraries" message="tns:ILibraryService_BooksInLibraries_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/BooksInLibrariesResponse" message="tns:ILibraryService_BooksInLibraries_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Request">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/Request" message="tns:ILibraryService_Request_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/RequestResponse" message="tns:ILibraryService_Request_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowRequests">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/ShowRequests" message="tns:ILibraryService_ShowRequests_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/ShowRequestsResponse" message="tns:ILibraryService_ShowRequests_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonalData">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILibraryService/GetPersonalData" message="tns:ILibraryService_GetPersonalData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILibraryService/GetPersonalDataResponse" message="tns:ILibraryService_GetPersonalData_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ILibraryService" type="tns:ILibraryService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetListOfBooks">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetListOfBooks" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyLogin">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/VerifyLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BooksInLibraries">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/BooksInLibraries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Request">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/Request" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowRequests">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/ShowRequests" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonalData">
+      <soap:operation soapAction="http://tempuri.org/ILibraryService/GetPersonalData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ILibraryService" type="tns:ILibraryService">
+    <wsp:PolicyReference URI="#NetTcpBinding_ILibraryService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetListOfBooks">
+      <soap12:operation soapAction="http://tempuri.org/ILibraryService/GetListOfBooks" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyLogin">
+      <soap12:operation soapAction="http://tempuri.org/ILibraryService/VerifyLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BooksInLibraries">
+      <soap12:operation soapAction="http://tempuri.org/ILibraryService/BooksInLibraries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Request">
+      <soap12:operation soapAction="http://tempuri.org/ILibraryService/Request" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowRequests">
+      <soap12:operation soapAction="http://tempuri.org/ILibraryService/ShowRequests" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonalData">
+      <soap12:operation soapAction="http://tempuri.org/ILibraryService/GetPersonalData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LibraryService">
+    <wsdl:port name="BasicHttpBinding_ILibraryService" binding="tns:BasicHttpBinding_ILibraryService">
+      <soap:address location="http://localhost:8080/MathService" />
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ILibraryService" binding="tns:NetTcpBinding_ILibraryService">
+      <soap12:address location="net.tcp://localhost:8090/LibraryService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8090/LibraryService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-E8H1AB9\Cezary</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

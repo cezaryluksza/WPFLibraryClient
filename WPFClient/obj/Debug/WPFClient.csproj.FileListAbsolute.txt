@@ -13,3 +13,5 @@ c:\users\cezary\source\repos\WPFClient\WPFClient\obj\Debug\WPFClient.csproj.Gene
 c:\users\cezary\source\repos\WPFClient\WPFClient\obj\Debug\WPFClient.csproj.CoreCompileInputs.cache
 c:\users\cezary\source\repos\WPFClient\WPFClient\obj\Debug\WPFClient.exe
 c:\users\cezary\source\repos\WPFClient\WPFClient\obj\Debug\WPFClient.pdb
+C:\Users\Cezary\source\repos\WPFClient\WPFClient\obj\Debug\LoginScreen.g.cs
+C:\Users\Cezary\source\repos\WPFClient\WPFClient\obj\Debug\LoginScreen.baml
